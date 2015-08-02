@@ -1,6 +1,11 @@
 <?php include 'Header.php'?>
 
 <style>
+    
+a.newsLink {
+    color: #333333;
+    font-weight: bold;
+}
 
 h3 {
     color: #333333;
@@ -26,7 +31,7 @@ h4 {
     border-radius: 0px;
     background: #FFFFFF;
     width: 250px;
-    height: 250px;
+    height: 290px;
     padding: 5px 10px 5px 10px;
     margin: 0px 5px 10px 5px;
 }
@@ -63,7 +68,7 @@ h4 {
     border-radius: 0px;
     background: #FFFFFF;
     width: 440px;
-    height: 270px;
+    height: 310px;
     padding: 5px 10px 5px 10px;
     margin: 0px 5px 10px 5px;
 }
@@ -73,10 +78,14 @@ h4 {
     border-radius: 0px;
     background: #FFFFFF;
     width: 340px;
-    height: 270px;
+    height: 310px;
     padding: 5px 10px 5px 10px;
     margin: 0px 5px 10px 5px;
 }
+    
+.button:hover {
+    background-color:#333333;
+} 
     
 </style>
 
@@ -87,13 +96,15 @@ h4 {
     
         <h3>Latest News</h3>
         
-        <h4>U.S. Stocks Drop, Weighed Down by Apple, Microsoft &nbsp;&nbsp;<a href="http://us.rd.yahoo.com/finance/external/wsj/rss/SIG=12v1r458o/*http://www.wsj.com/articles/u-s-stock-futures-drop-weighed-down-by-apple-microsoft-1437567898?ru=yahoo?mod=yahoo_itp" target="_blank">WSJ</a></h4>
+        <p>U.S. Stocks Drop, Weighed Down by Apple, Microsoft &nbsp;&nbsp;<a class="newsLink" href="http://us.rd.yahoo.com/finance/external/wsj/rss/SIG=12v1r458o/*http://www.wsj.com/articles/u-s-stock-futures-drop-weighed-down-by-apple-microsoft-1437567898?ru=yahoo?mod=yahoo_itp" target="_blank">WSJ</a></p>
 
-        <h4>Asian stocks dented by weak US lead, data deluge &nbsp;&nbsp;<a href="http://us.rd.yahoo.com/finance/external/cnbc/rss/SIG=112g7af9u/*http://www.cnbc.com/id/102856359?__source=yahoo%7cfinance%7cheadline%7cheadline%7cstory&par=yahoo&doc=102856359" target="_blank">Yahoo!</a></h4>
+        <p>Asian stocks dented by weak US lead, data deluge &nbsp;&nbsp;<a class="newsLink" href="http://us.rd.yahoo.com/finance/external/cnbc/rss/SIG=112g7af9u/*http://www.cnbc.com/id/102856359?__source=yahoo%7cfinance%7cheadline%7cheadline%7cstory&par=yahoo&doc=102856359" target="_blank">Yahoo!</a></p>
 
-        <h4>Tokyo stocks open 0.50% higher &nbsp;&nbsp;<a href="http://us.rd.yahoo.com/finance/news/rss/story/*http://sg.finance.yahoo.com/news/tokyo-stocks-open-0-50-001551717.html" target="_blank">Yahoo!</a></h4>
+        <p>Tokyo stocks open 0.50% higher &nbsp;&nbsp;<a class="newsLink" href="http://us.rd.yahoo.com/finance/news/rss/story/*http://sg.finance.yahoo.com/news/tokyo-stocks-open-0-50-001551717.html" target="_blank">Yahoo!</a></p>
 
-        <h4>Brace yourself! Thursday is earnings palooza &nbsp;&nbsp;<a href="http://us.rd.yahoo.com/finance/external/cnbc/rss/SIG=112kiuhmm/*http://www.cnbc.com/id/102855660?__source=yahoo%7cfinance%7cheadline%7cheadline%7cstory&par=yahoo&doc=102855660" target="_blank">CNBC</a></h4>
+        <p>Brace yourself! Thursday is earnings palooza &nbsp;&nbsp;<a class="newsLink" href="http://us.rd.yahoo.com/finance/external/cnbc/rss/SIG=112kiuhmm/*http://www.cnbc.com/id/102855660?__source=yahoo%7cfinance%7cheadline%7cheadline%7cstory&par=yahoo&doc=102855660" target="_blank">CNBC</a></p>
+
+        <p>Pacific Rim free trade talks fall short of deal &nbsp;&nbsp;<a class="newsLink" href="https://ca.finance.yahoo.com/news/india-seeks-extra-4-billion-072130901.html" target="_blank">Yahoo!</a></p>
 
     </div>
 
@@ -210,11 +221,13 @@ h4 {
 
         <br>
 
-        <button onclick="updateIndustry_dow()" style="background-color: #808080; color: #FFFFFF; font-size: 19px; border: 0; cursor: hand;">DOW</button>
+        <button onclick="updateIndustry_dow()" style="background-color: #C0C0C0; color: #FFFFFF; font-size: 19px; border: 0; cursor: hand;">DOW</button>
             
-        <button onclick="updateIndustry_nasdaq()" style="background-color: #808080; color: #FFFFFF; font-size: 19px; border: 0; cursor: hand;">NASDAQ</button>
+        <button onclick="updateIndustry_nasdaq()" style="background-color: #C0C0C0; color: #FFFFFF; font-size: 19px; border: 0; cursor: hand;">NASDAQ</button>
             
-        <button onclick="updateIndustry_snp()" style="background-color: #808080; color: #FFFFFF; font-size: 19px; border: 0; cursor: hand;">S&P 500</button>
+        <button onclick="updateIndustry_snp()" style="background-color: #C0C0C0; color: #FFFFFF; font-size: 19px; border: 0; cursor: hand;">S&P 500</button>
+
+
 
         <br>
 
@@ -245,7 +258,7 @@ h4 {
                 <br>
 
                 <center>
-                <img src="wordCloud.jpg" width="450" height="200">
+                <img src="wordCloud.jpg" width="450" height="250">
                 </center>
 
                 </div>
@@ -255,15 +268,8 @@ h4 {
                 <div id="orangeLine" style="background-image: url(MenuReversed.jpg);width:360px; margin:0px 5px 0px 5px; height:0px;text-align:center; opacity: .5;"></div>
                 <div id="div6">
 
-                <h3>Latest Tweets &nbsp;<img src="twitterLogo.png" width="25" height="20"></h3> 
-
-                <br>
-
-                Tweet goes here when I figure out how to link Twitter API
-                <br><br><br>
-                Tweet goes here when I figure out how to link Twitter API
-                <br><br><br>
-                Tweet goes here when I figure out how to link Twitter API
+                <a class="twitter-timeline" href="https://twitter.com/Microsoft" data-widget-id="627696253996929024">Tweets by @Microsoft</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 
                 </div>
             </div>
