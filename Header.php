@@ -1,6 +1,6 @@
 <link rel="stylesheet" type="text/css" href="header.css">
 
-<?php include 'statRecorder.php';?>
+<?php //include 'statRecorder.php';?>
 
 <div id="topBar">
     <div style="float: right;">
@@ -11,11 +11,35 @@
     </div>
     <div id="tickerDiv" style="float: left;">
         <p id="ticker" style="display: table-cell; vertical-align: top; padding-top: 5px; padding-left: 10px;">
-            <span style="color: #FFFFFF; padding-right: 5px;"><b>DOW</b></span>18,120.25<span style="color: #00CC00; padding-left: 5px; padding-right: 20px;">+70.08 (0.39%)</span>
-            <span style="color: #FFFFFF; padding-right: 5px;"><b>NASDAQ</b></span>5,163.18<span style="color: #00CC00; padding-left: 5px; padding-right: 20px;"">+64.24 (1.26%)</span>
-            <span style="color: #FFFFFF; padding-right: 5px;"><b>S&P 500</b></span>2,124.29<span style="color: #00CC00; padding-left: 5px; padding-right: 20px;"">+16.89 (0.80%)</span>
+            
+            <span style="padding-right: 5px;"><b>DOW</b></span>
+            <span id="DJI_last"></span>
+            <span id="DJI_changeInfo" style="padding-left: 5px; padding-right: 20px;">
+                <span id="DJI_change"></span>
+                <span id="DJI_changePercent"></span>
+            </span>
+
+            <span style="padding-right: 5px;">
+                <b>NASDAQ</b>
+            </span>
+            <span id="IXIC_last"></span>
+            <span id="IXIC_changeInfo" style="padding-left: 5px; padding-right: 20px;">
+                <span id="IXIC_change"></span>
+                <span id="IXIC_changePercent"></span>
+            </span>
+
+            <span style="padding-right: 5px;">
+                <b>S&P 500</b>
+            </span>
+            <span id="INX_last"></span>
+            <span id="INX_changeInfo" style="padding-left: 5px; padding-right: 20px;">
+                <span id="INX_change"></span>
+                <span id="INX_changePercent"></span>
+            </span>
+            
         </p>
         <script src="clock.js"></script>
+        <script src="ticker.js"></script>
     </div>
 </div>
 
