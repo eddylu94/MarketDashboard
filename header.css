@@ -3,7 +3,7 @@
 }
 
 body {
-    background-color: #FFFFFF;
+    background-color: #F8F8F8;
     font-family: Calibri;
     margin:0;
     height:100%;
@@ -11,9 +11,6 @@ body {
 
 h3 {
     color: #333333;
-    padding: 0px;
-    margin: 0px 0px 10px 0px;
-    border-bottom: 3px solid #D8D8D8;
 } 
     
 h4 {
@@ -59,8 +56,6 @@ h4 {
 #container {
     float: left;
     width: 1140px;
-    height: 810px;
-    background-color: #FFFFFF;
     padding: 0px;
     text-align: left;
     margin: 20px;
