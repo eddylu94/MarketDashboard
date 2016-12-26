@@ -2,9 +2,6 @@ var getLatestNewsJSON = function (latestNewsAPI) {
 
     $.getJSON(latestNewsAPI, function (data) {
 
-        var date = new Date('2012-11-29 03:41:30 UTC');
-        date.toString();
-
         var article = data.articles[0];
         var title = article.title;
         var description = article.description;
@@ -16,8 +13,16 @@ var getLatestNewsJSON = function (latestNewsAPI) {
         ];
         
         var publishedAt = new Date(article.publishedAt.substring(0, 19).replace('T', ' ') + " UTC");
+
         var date = monthNames[publishedAt.getMonth()] + " " + publishedAt.getDate() + ", " + publishedAt.getFullYear();
-        var time = publishedAt.getHours() + ":" + publishedAt.getMinutes();
+
+        var hours = publishedAt.getHours();
+        var hoursString = hours < 10 ? "0" + hours.toString() : hours.toString();
+
+        var minutes = publishedAt.getMinutes();
+        var minutesString = minutes < 10 ? "0" + minutes.toString() : minutes.toString();
+
+        var time = hoursString + ":" + minutesString;
 
         var source = mapNewsSourceNames(data.source);
 
