@@ -75,6 +75,16 @@
               margin: 0;
               padding: 0;
             }
+
+			#latestNews_table {
+				margin: 0px;
+				padding: 0px;
+			}
+
+			#latestNews_table tr, td {
+				margin: 0px;
+				padding: 0px;
+			}
         </style>
     </head>
     <body>
@@ -152,7 +162,7 @@
                 </div>
 
 				<!--div4-->
-                <div id="tile" style="width: 250px; height:450px;">
+                <div id="tile" style="width: 250px; height:500px;">
                     <a class="twitter-timeline" data-width="300" data-height="450" data-dnt="true" data-theme="light" data-link-color="#FAB81E" href="https://twitter.com/NYSE">Tweets by NYSE</a>
 					<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
                 </div>
@@ -184,13 +194,12 @@
                 </div>
                         
 				<!--div6-->
-				<div id="tile" style="width: 800px; height: 450px;">
+				<div id="tile" style="width: 800px; height: 500px;">
 					<h3 id="tile_h3">Latest News</h3>
-					<div id="newsHighlight">U.S. Stocks Drop, Weighed Down by Apple, Microsoft <a class="newsLink" href="http://us.rd.yahoo.com/finance/external/wsj/rss/SIG=12v1r458o/*http://www.wsj.com/articles/u-s-stock-futures-drop-weighed-down-by-apple-microsoft-1437567898?ru=yahoo?mod=yahoo_itp" target="_blank">WSJ</a></div>
-					<div id="newsHighlight">Asian stocks dented by weak US lead, data deluge <a class="newsLink" href="http://us.rd.yahoo.com/finance/external/cnbc/rss/SIG=112g7af9u/*http://www.cnbc.com/id/102856359?__source=yahoo%7cfinance%7cheadline%7cheadline%7cstory&par=yahoo&doc=102856359" target="_blank">Yahoo!</a></div>
-					<div id="newsHighlight">Tokyo stocks open 0.50% higher <a class="newsLink" href="http://us.rd.yahoo.com/finance/news/rss/story/*http://sg.finance.yahoo.com/news/tokyo-stocks-open-0-50-001551717.html" target="_blank">Yahoo!</a></div>
-					<div id="newsHighlight">Brace yourself! Thursday is earnings palooza <a class="newsLink" href="http://us.rd.yahoo.com/finance/external/cnbc/rss/SIG=112kiuhmm/*http://www.cnbc.com/id/102855660?__source=yahoo%7cfinance%7cheadline%7cheadline%7cstory&par=yahoo&doc=102855660" target="_blank">CNBC</a></div>
-					<div id="newsHighlight">Pacific Rim free trade talks fall short of deal <a class="newsLink" href="https://ca.finance.yahoo.com/news/india-seeks-extra-4-billion-072130901.html" target="_blank">Yahoo!</a></div>
+					<?php include 'latestNewsAPI.php';?>
+					<script src="latestNews.js"></script>
+					<table id="latestNews_table"></table>
+					<span style="color: #686868;">Powered by NewsAPI</span>
 				</div>
                 
             </div>
