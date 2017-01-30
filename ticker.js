@@ -3,7 +3,8 @@ var getTickerJSON = function (urlParam, id) {
     $.getJSON(url, function (data) {
         document.getElementById(id + "_last").innerHTML = data[0].l;
         document.getElementById(id + "_change").innerHTML = data[0].c;
-        document.getElementById(id + "_changePercent").innerHTML = "(" + data[0].cp + "%)";
+        var cpSign = data[0].c.indexOf("+") === 0 ? '+' : '';
+        document.getElementById(id + "_changePercent").innerHTML = "(" + cpSign + data[0].cp + "%)";
         if (data[0].c.charAt(0) == '+') {
             document.getElementById(id + "_changeInfo").style.color = "#00FF00";
         }

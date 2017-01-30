@@ -37,8 +37,7 @@
 				padding-left: 10px;
 				height: 30px;
 				width: 220px;
-				box-sizing:
-				border-box;
+				box-sizing: border-box;
 				-moz-box-sizing: border-box;
 			}
 
@@ -56,24 +55,16 @@
 				-moz-box-sizing: border-box;
 			}
 
-			#trending_ol li {
-				width: 120px;
-				margin-bottom: 5px;
-			}
-    
+            #gainersLosers_table {
+                border: none;
+            }
+
 			#newsHighlight {
 				margin-bottom: 20px;
 			}
 
             .button:hover {
                 background-color:#333333;
-            }
-            
-            #trendingTable a {
-              color: #333333;        
-              text-decoration: none;
-              margin: 0;
-              padding: 0;
             }
 
 			#latestNews_table {
@@ -107,58 +98,23 @@
 					</input>
 				</div>
 					
+                <?php include 'gainersLosersAPI.php';?>
+                <script src="gainersLosers.js"></script>
+
 				<!--div2-->
 				<div id="tile" style="width: 250px; height: 150px;">
-					<h3 id="tile_h3">Trending for Gains <span style="color: #A0A0A0">&#9650;</span></h3>
-                    <table id="trendingTable">
-                        <tr>
-                            <td>
-                                <ol id="trending_ol" style="margin: 0; padding: 0; list-style-position:inside">
-                                    <li><a href="https://twitter.com/search?q=CEO&src=typd&lang=en" target="_blank">CEO</a></li>
-                                    <li><a href="https://twitter.com/search?q=raise&src=typd&lang=en" target="_blank">raise</a></li>
-                                    <li><a href="https://twitter.com/search?q=assist&src=typd&lang=en" target="_blank">assist</a></li>
-                                    <li><a href="https://twitter.com/search?q=ramped&src=typd&lang=en" target="_blank">ramped</a></li>
-                                    <li><a href="https://twitter.com/search?q=develop&src=typd&lang=en" target="_blank">develop</a></li>
-                                </ol>
-                            </td>
-                            <td>
-                                <ol id="trending_ol" start="6" style="margin: 0; padding: 0; list-style-position:inside">
-                                    <li><a href="https://twitter.com/search?q=donates&src=typd&lang=en" target="_blank">donates</a></li>
-                                    <li><a href="https://twitter.com/search?q=greater&src=typd&lang=en" target="_blank">greater</a></li>
-                                    <li><a href="https://twitter.com/search?q=expectation&src=typd&lang=en" target="_blank">expectation</a></li>
-                                    <li><a href="https://twitter.com/search?q=call&src=typd&lang=en" target="_blank">call</a></li>
-                                    <li><a href="https://twitter.com/search?q=Android&src=typd&lang=en" target="_blank">Android</a></li>
-                                </ol>
-                            </td>
-                        </tr>
-                    </table>
+					<h3 id="tile_h3">Top Gainers <span style="color: #A0A0A0">&#9650;</span></h3>
+                    <div id="gainers_div" style="color: #333333;">
+                        <table id="gainers_table"></table>
+                    </div>
                 </div>
                     
 				<!--div3-->
                 <div id="tile" style="width: 250px; height: 150px;">
-                    <h3 id="tile_h3">Trending for Losses <span style="color: #A0A0A0">&#9660;</span></h3>
-                    <table id="trendingTable" style="margin: 0; padding: 0;">
-                        <tr>
-                            <td>
-                                <ol id="trending_ol" style="margin: 0; padding: 0; list-style-position:inside">
-                                    <li><a href="https://twitter.com/search?q=unprepared&src=typd&lang=en" target="_blank">unprepared</a></li>
-                                    <li><a href="https://twitter.com/search?q=divert&src=typd&lang=en" target="_blank">divert</a></li>
-                                    <li><a href="https://twitter.com/search?q=public&src=typd&lang=en" target="_blank">public</a></li>
-                                    <li><a href="https://twitter.com/search?q=news&src=typd&lang=en" target="_blank">news</a></li>
-                                    <li><a href="https://twitter.com/search?q=legal&src=typd&lang=en" target="_blank">legal</a></li>
-                                </ol>
-                            </td>
-                            <td>
-                                <ol id="trending_ol" start="6" style="margin: 0; padding: 0; list-style-position:inside">
-                                    <li><a href="https://twitter.com/search?q=resigns&src=typd&lang=en" target="_blank">resigns</a></li>
-                                    <li><a href="https://twitter.com/search?q=prepare&src=typd&lang=en" target="_blank">prepare</a></li>
-                                    <li><a href="https://twitter.com/search?q=malfunction&src=typd&lang=en" target="_blank">malfunction</a></li>
-                                    <li><a href="https://twitter.com/search?q=reconfigure&src=typd&lang=en" target="_blank">reconfigure</a></li>
-                                    <li><a href="https://twitter.com/search?q=step&src=typd&lang=en" target="_blank">step</a></li>
-                                </ol>
-                            </td>
-                        </tr>
-                    </table>
+                    <h3 id="tile_h3">Top Losers <span style="color: #A0A0A0">&#9660;</span></h3>
+                    <div id="losers_div" style="color: #333333;">
+                        <table id="losers_table"></table>
+                    </div>
                 </div>
 
 				<!--div4-->
@@ -192,7 +148,7 @@
                         </script>
                     </div>
                 </div>
-                        
+                
 				<!--div6-->
 				<div id="tile" style="width: 800px; height: 500px;">
 					<h3 id="tile_h3">Latest News</h3>
