@@ -11,17 +11,15 @@ var getGainersLosers = function (isGainer) {
                 //    symbol: "MSFT",
                 //    last: "449.8600",
                 //    chg: "25.3600",
-                //    chg_sign: "u",
                 //    pchg: "5.9741 %",
                 //}
 
                 var symbol = quote.symbol;
                 var change = quote.chg;
-                var changeSign = quote.chg_sign;
                 var percentChange = quote.pchg;
                 var last = quote.last;
 
-                createGainerLoserListing(gainerLoser, symbol, last, change, changeSign, percentChange);
+                createGainerLoserListing(gainerLoser, symbol, last, change, percentChange);
             }
         },
         error: function (data) {
@@ -31,7 +29,7 @@ var getGainersLosers = function (isGainer) {
     });
 };
 
-var createGainerLoserListing = function (gainerLoser, symbol, last, change, changeSign, percentChange) {
+var createGainerLoserListing = function (gainerLoser, symbol, last, change, percentChange) {
 
     var gainersLosersTable = document.getElementById(gainerLoser + "_table");
     gainersLosersTable.style.borderCollapse = "collapse";
@@ -60,24 +58,13 @@ var createGainerLoserListing = function (gainerLoser, symbol, last, change, chan
     newCell_last.innerHTML = trimValue(last, 2);
 
     var sign;
-    if (changeSign === "e") {
-        sign = '';
-    }
-    else if (changeSign === "u") {
-        sign = '+';
-    }
-    else if (changeSign === "d") {
-        sign = '-';
-    }
-
     var color;
-    if (changeSign === "e") {
-        color = "#000000";
-    }
-    else if (changeSign === "u") {
+    if (gainerLoser === "gainers") {
+        sign = '+';
         color = "#33cc33";
     }
-    else if (changeSign === "d") {
+    else if (gainerLoser === "losers") {
+        sign = '-';
         color = "#FF0000";
     }
 
@@ -85,7 +72,7 @@ var createGainerLoserListing = function (gainerLoser, symbol, last, change, chan
     newCell_change.style.color = color;
     newCell_change.style.paddingLeft = "10px"
     newCell_change.style.paddingBottom = "5px";
-    newCell_change.innerHTML = sign + trimValue(change, 2);
+    newCell_change.innerHTML = gainerLoser === "gainers" ? sign + trimValue(change, 2) : trimValue(change, 2);
 
     var newCell_percentChange = newRow.insertCell(3);
     newCell_percentChange.style.color = color;
