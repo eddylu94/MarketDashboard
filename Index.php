@@ -87,12 +87,19 @@
                 
 				<!--div1-->
 				<div id="tile" style="display: table; width: 250px; height: 30px; box-shadow: 0px 0px 5px #CCCCCC;">
-					<input type="text" id="symbol_input" placeholder="Search symbol (ex. MSFT)" autofocus="true">
+					<input type="text" id="symbol_input" placeholder="Search symbol (ex. MSFT)" autofocus="true" onkeydown="textInputSubmit()">
 						<button id="symbol_button" onclick="submitSymbol()">&#9906;</button>
 						<script>
 							function submitSymbol() {
-								var symbolInput = document.getElementById("symbol_input").value;
-								console.log(symbolInput);
+								var symbolInput = document.getElementById("symbol_input").value.toUpperCase();
+
+								window.location.href = "Companies.php" + "?symbol=" + symbolInput;
+							}
+
+							function textInputSubmit() {
+								if (event.keyCode === 13) {
+									submitSymbol();
+								}
 							}
 						</script>
 					</input>
