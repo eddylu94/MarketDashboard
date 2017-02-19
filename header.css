@@ -43,6 +43,7 @@ h4 {
     position: fixed;
     background-color: #333333;
     text-align: left;
+    z-index: 200;
 }
 
 #navMenu_placeholder {
@@ -51,6 +52,7 @@ h4 {
     height: 100%;
     display: block;
     position: static;
+    z-index: 100;
 }
 
 #container {

@@ -136,7 +136,7 @@
 
 				<!--div5-->
                 <div id="tile" style="width: 800px; height: 420px;">
-                    <img id="industryChart" src="http://chart.finance.yahoo.com/z?s=^dji&t=6m&q=l&l=on&z=l&" style="margin-bottom: 10px;" />
+                    <img id="industryChart" src="http://chart.finance.yahoo.com/z?s=^dji&t=6m&q=l&l=on&z=l&" style="margin-bottom: 10px; filter: grayscale(100%);" />
                     <br />
                     <div style="text-align: center; width: 100%;">
                         <button onclick="updateIndustry_dow()" style="background-color: #C0C0C0; color: #FFFFFF; font-size: 19px; border: 0; cursor: hand;">DOW</button>

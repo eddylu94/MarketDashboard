@@ -61,7 +61,7 @@ var createGainerLoserListing = function (gainerLoser, symbol, last, change, perc
     var color;
     if (gainerLoser === "gainers") {
         sign = '+';
-        color = "#33cc33";
+        color = "#33CC33";
     }
     else if (gainerLoser === "losers") {
         sign = '-';
