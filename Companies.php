@@ -41,6 +41,14 @@
                 padding: 20px 30px 20px 30px;
 			}
 
+            #tile5 {
+                display: none;
+				background: #FFFFFF;
+				margin: 0px 0px 15px 0px;
+				box-shadow: 0px 0px 5px #CCCCCC;
+                padding: 20px 30px 20px 30px;
+			}
+
             #symbol_input {
 				vertical-align: middle;
 				padding-left: 10px;
@@ -98,6 +106,22 @@
             #tooltip:hover #tooltiptext {
                 visibility: visible;
             }
+
+            #significantChangesGainers_ul {
+                list-style: none;
+                padding-left: 0px;
+                columns: 2;
+                -webkit-columns: 2;
+                -moz-columns: 2;
+            }
+
+            #significantChangesLosers_ul {
+                list-style: none;
+                padding-left: 0px;
+                columns: 2;
+                -webkit-columns: 2;
+                -moz-columns: 2;
+            }
         </style>
     </head>
     <body>
@@ -149,6 +173,24 @@
                 <br /><br />
 
                 <table id="percentChanges_table"></table>
+            </div>
+
+            <!--div5-->
+            <div id="tile5">
+                <div id="significantChanges" style="display: flex; flex-direction: row;">
+                    <div id="significantChangesGainers_div" style="width: 540px;">
+                        <h3>Significant Gain Dates <span style="color: #A0A0A0">&#9650;</span></h3>
+                        <div id="significantChangesGainers">
+                            <ul id="significantChangesGainers_ul"></ul>
+                        </div>
+                    </div>
+                    <div id="significantChangesLosers_div" style="width: 540px;">
+                        <h3>Significant Loss Dates <span style="color: #A0A0A0">&#9660;</span></h3>
+                        <div id="significantChangesLosers">
+                            <ul id="significantChangesLosers_ul"></ul>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <script src="company.js"></script>

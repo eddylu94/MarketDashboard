@@ -64,7 +64,7 @@ h4 {
     font-family: Calibri;
 }
 
-ul {
+ul#navMenu_ul {
     list-style-type: none;
     color: #FFFFFF;
     font-family: Calibri;
@@ -74,16 +74,16 @@ ul {
     margin-top: 20px;
 }
     
-ul li {
+ul#navMenu_ul li {
     margin-bottom: 15px;
 }
     
-ul li a {
+ul#navMenu_ul li a {
     color: #FFFFFF;
     text-decoration: none;      
 }
     
-ul li:hover {
+ul#navMenu_ul li:hover {
     background-color: #808080;
     color: #FFFFFF;
 }  

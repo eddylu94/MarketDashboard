@@ -46,7 +46,7 @@
 <div id="topBar_placeholder">&nbsp;</div>
         
 <div id="navMenu">
-  <ul>
+  <ul id="navMenu_ul">
       <li><a href="Index.php"><img src="dashboard_icon.png" style="height: 25px; width: 25px; vertical-align: middle;" /> Dashboard</a></li>
       <li><a href="Companies.php"><img src="companies_icon.png" style="height: 25px; width: 25px; vertical-align: middle;" /> Companies</a></li>
       <li><a href="Policy.php"><img src="policy_icon.png" style="height: 25px; width: 25px; vertical-align: middle;" /> Policy</a></li>

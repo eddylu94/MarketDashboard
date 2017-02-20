@@ -84,6 +84,7 @@ if (hasSymbol) {
     document.getElementById("tile2").style.display = "block";
     document.getElementById("tile3").style.display = "block";
     document.getElementById("tile4").style.display = "block";
+    document.getElementById("tile5").style.display = "block";
     getChart(query);
     getCompanySummary(query);
 }
@@ -147,6 +148,12 @@ var getCompanyData = function (urlParam) {
 
         var percentChanges_table = document.getElementById("percentChanges_table");
 
+        var significantChangesGainers_ul = document.getElementById("significantChangesGainers_ul");
+        significantChangesGainers_ul.innerHTML = "";
+
+        var significantChangesLosers_ul = document.getElementById("significantChangesLosers_ul");
+        significantChangesLosers_ul.innerHTML = "";
+
         var newRow;
         for (var i = 0; i < dateAndPercentChanges.length; i++) {
             if (i % 12 === 0) {
@@ -163,14 +170,29 @@ var getCompanyData = function (urlParam) {
                 percentChangeString = "+" + percentChangeString;
             }
 
+            var monthNames = ["January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"
+            ];
+
+            var currentDate_split = currentDate.split("-");
+            var year = parseInt(currentDate_split[0]);
+            var month = parseInt(currentDate_split[1]);
+            var day = parseInt(currentDate_split[2]);
+
+            var dateString = monthNames[month - 1] + " " + day + ", " + year;
+
             newCell_percentChange.innerHTML = "<span id=\"tooltip\">" + percentChangeString + "<span id=\"tooltiptext\">" + currentDate + "</span></span>";
             if (currentPercentChange <= mean - stdev / 2) {
                 newCell_percentChange.style.fontWeight = "bold";
                 newCell_percentChange.style.color = "#FF0000";
+
+                significantChangesLosers_ul.innerHTML += "<li style=\"padding-bottom: 5px;\"><span style=\"float: left; width: 150px;\">" + dateString + "</span> " + percentChangeString + "</li>"
             }
             if (currentPercentChange >= mean + stdev / 2) {
                 newCell_percentChange.style.fontWeight = "bold";
                 newCell_percentChange.style.color = "#006400";
+
+                significantChangesGainers_ul.innerHTML += "<li style=\"padding-bottom: 5px;\"><span style=\"float: left; width: 150px;\">" + dateString + "</span> " + percentChangeString + "</li>"
             }
         }
     });
