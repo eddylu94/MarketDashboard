@@ -49,6 +49,22 @@
                 padding: 20px 30px 20px 30px;
 			}
 
+            #tile6 {
+                display: none;
+				background: #FFFFFF;
+				margin: 0px 0px 15px 0px;
+				box-shadow: 0px 0px 5px #CCCCCC;
+                padding: 20px 30px 20px 30px;
+            }
+
+            #tile7 {
+                display: none;
+				background: #FFFFFF;
+				margin: 0px 0px 15px 0px;
+				box-shadow: 0px 0px 5px #CCCCCC;
+                padding: 20px 30px 20px 30px;
+            }
+
             #symbol_input {
 				vertical-align: middle;
 				padding-left: 10px;
@@ -122,6 +138,10 @@
                 -webkit-columns: 2;
                 -moz-columns: 2;
             }
+
+            #pastWeek_table {
+                width: 1080px;
+            }
         </style>
     </head>
     <body>
@@ -192,6 +212,12 @@
                     </div>
                 </div>
             </div>
+
+            <!--div6-->
+            <div id="tile6">
+                <h3 id="tile_h3">Past Week</h3>
+                <table id="pastWeek_table"></table>
+            </div>     
 
             <script src="company.js"></script>
 

@@ -80,31 +80,24 @@ var getCompanySummary = function (urlParam) {
     });
 }
 
-if (hasSymbol) {
-    document.getElementById("tile2").style.display = "block";
-    document.getElementById("tile3").style.display = "block";
-    document.getElementById("tile4").style.display = "block";
-    document.getElementById("tile5").style.display = "block";
-    getChart(query);
-    getCompanySummary(query);
-}
-
 var getDateAndPercentChanges = function (dateAndClose) {
     dateAndPercentChanges = [];
     for (var i = 1; i < dateAndClose.length; i++) {
         var currentPrice = dateAndClose[i].close;
         var previousPrice = dateAndClose[i - 1].close;
         var percentChange = (currentPrice - previousPrice) / previousPrice * 100;
+        var change = currentPrice - previousPrice;
         dateAndPercentChanges.push({
             date: dateAndClose[i].date,
-            percentChange: percentChange
+            percentChange: percentChange,
+            change: change
         })
     }
     return dateAndPercentChanges;
 }
 
 var getCompanyData = function (urlParam) {
-    url = "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.historicaldata%20where%20symbol%20%3D%20%22msft%22%20and%20startDate%20%3D%20%222016-02-17%22%20and%20endDate%20%3D%20%222017-02-17%22&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=";
+    url = "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.historicaldata%20where%20symbol%20%3D%20%22" + urlParam + "%22%20and%20startDate%20%3D%20%222016-02-17%22%20and%20endDate%20%3D%20%222017-02-17%22&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=";
     $.getJSON(url, function (data) {
         var quote = data.query.results.quote;
         var dateAndClose = quote.map(
@@ -154,8 +147,8 @@ var getCompanyData = function (urlParam) {
         var significantChangesLosers_ul = document.getElementById("significantChangesLosers_ul");
         significantChangesLosers_ul.innerHTML = "";
 
-        var newRow;
         for (var i = 0; i < dateAndPercentChanges.length; i++) {
+            var newRow;
             if (i % 12 === 0) {
                 newRow = percentChanges_table.insertRow(percentChanges_table.rows.length);
             }
@@ -198,4 +191,92 @@ var getCompanyData = function (urlParam) {
     });
 }
 
-getCompanyData("MSFT");
+var getPastWeekData = function (urlParam) {
+    url = "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.historicaldata%20where%20symbol%20%3D%20%22" + urlParam + "%22%20and%20startDate%20%3D%20%222016-02-17%22%20and%20endDate%20%3D%20%222017-02-17%22&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=";
+    $.getJSON(url, function (data) {
+        var quote = data.query.results.quote;
+        var dateAndClose = quote.map(
+            function (quote) {
+                return {
+                    date: quote.Date,
+                    close: parseFloat(quote.Close)
+                };
+            }
+        );
+        var dateAndPercentChanges = getDateAndPercentChanges(dateAndClose);
+
+        var percentChanges = dateAndPercentChanges.map(
+            function (dateAndPercentChanges) {
+                return dateAndPercentChanges.percentChange;
+            }
+        );
+        
+        var pastWeek_table = document.getElementById("pastWeek_table");
+
+        var newRow_dates = pastWeek_table.insertRow(0);
+        var newRowHeaderCell_dates = newRow_dates.insertCell(0);
+        for (var i = 1; i <= 7; i++) {
+            var newCell = newRow_dates.insertCell(i);
+
+            var currentDate = dateAndPercentChanges[i].date;
+
+            var monthNames = ["Jan.", "Feb.", "Mar.", "Apr.", "May", "June",
+                "July", "Aug.", "Sept.", "Oct.", "Nov.", "Dec."
+            ];
+
+            var currentDate_split = currentDate.split("-");
+            var year = parseInt(currentDate_split[0]);
+            var month = parseInt(currentDate_split[1]);
+            var day = parseInt(currentDate_split[2]);
+
+            var dateString = monthNames[month - 1] + " " + day + ", " + year;
+
+            newCell.innerHTML = dateString;
+        }
+
+        var newRow_changes = pastWeek_table.insertRow(1);
+        var newRowHeaderCell_changes = newRow_changes.insertCell(0);
+        newRowHeaderCell_changes.innerHTML = "Change";
+        for (var i = 1; i <= 7; i++) {
+            var newCell = newRow_changes.insertCell(i);
+
+            var currentChange = dateAndPercentChanges[i].change;
+
+            var changeString = currentChange.toFixed(2);
+            if (changeString > 0) {
+                changeString = "+" + changeString;
+            }
+
+            newCell.innerHTML = changeString;
+        }
+
+        var newRow_percentChanges = pastWeek_table.insertRow(2);
+        var newRowHeaderCell_percentChanges = newRow_percentChanges.insertCell(0);
+        newRowHeaderCell_percentChanges.innerHTML = "Percent Change";
+        for (var i = 1; i <= 7; i++) {
+            var newCell = newRow_percentChanges.insertCell(i);
+
+            var currentPercentChange = dateAndPercentChanges[i].percentChange;
+
+            var percentChangeString = currentPercentChange.toFixed(3) + "%";
+            if (currentPercentChange > 0) {
+                percentChangeString = "+" + percentChangeString;
+            }
+
+            newCell.innerHTML = percentChangeString;
+        }
+    });
+}
+
+if (hasSymbol) {
+    document.getElementById("tile2").style.display = "block";
+    document.getElementById("tile3").style.display = "block";
+    document.getElementById("tile4").style.display = "block";
+    document.getElementById("tile5").style.display = "block";
+    document.getElementById("tile6").style.display = "block";
+    document.getElementById("tile7").style.display = "block";
+    getChart(query);
+    getCompanySummary(query);
+    getCompanyData(query);
+    getPastWeekData(query);
+}
